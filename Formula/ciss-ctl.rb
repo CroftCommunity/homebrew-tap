@@ -2,15 +2,13 @@
 
 # ciss-ctl — the reference client CLI for CISS (Croft Item Storage Server).
 #
-# No tagged CISS release ships `ciss-ctl` yet, so this installs from HEAD:
-#
-#   brew install --HEAD croftcommunity/tap/ciss-ctl
-#
-# When a release that includes `ciss-ctl` is cut, add a stable `url` + verified
-# `sha256` stanza above `head` and drop the `--HEAD` requirement.
+#   brew install croftcommunity/tap/ciss-ctl          # the pinned release
+#   brew install --HEAD croftcommunity/tap/ciss-ctl   # latest main
 class CissCtl < Formula
   desc "Client CLI for CISS: metered S3 + atproto blob planes with gated reads"
   homepage "https://github.com/CroftCommunity/CISS"
+  url "https://github.com/CroftCommunity/CISS/releases/download/v0.5.0/ciss-0.5.0.tar.gz"
+  sha256 "f91e793c34a3e4efdee4385a3643a5c399e914672179f9e94f76c20dafcebf1a"
   license "AGPL-3.0-only"
   head "https://github.com/CroftCommunity/CISS.git", branch: "main"
 
@@ -20,6 +18,10 @@ class CissCtl < Formula
     # Build only the client binary from the workspace member. Pure-Rust deps
     # (rustls, k256, ed25519-dalek, ssh-key) — no C toolchain needed.
     system "cargo", "install", *std_cargo_args(path: "crates/ciss-cli")
+
+    # Man page, generated from the built binary's hidden `man` subcommand.
+    (buildpath/"ciss-ctl.1").write Utils.safe_popen_read(bin/"ciss-ctl", "man")
+    man1.install "ciss-ctl.1"
   end
 
   test do
