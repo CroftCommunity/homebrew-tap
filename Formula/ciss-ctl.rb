@@ -7,8 +7,8 @@
 class CissCtl < Formula
   desc "Client CLI for CISS: metered S3 + atproto blob planes with gated reads"
   homepage "https://github.com/CroftCommunity/CISS"
-  url "https://github.com/CroftCommunity/CISS/releases/download/v0.5.3/ciss-0.5.3.tar.gz"
-  sha256 "9ec080772e05c8861612362d014457449eab488d9ea75e3815903c73f1f16ae0"
+  url "https://github.com/CroftCommunity/CISS/releases/download/v0.5.4/ciss-0.5.4.tar.gz"
+  sha256 "41c3dd58967c09fa8fc7afee7054608c733b62eff90a6bade2c0fad724bf4c40"
   license "AGPL-3.0-only"
   head "https://github.com/CroftCommunity/CISS.git", branch: "main"
 
