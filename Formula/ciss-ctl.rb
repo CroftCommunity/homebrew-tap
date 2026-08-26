@@ -7,8 +7,14 @@
 class CissCtl < Formula
   desc "Client CLI for CISS: metered S3 + atproto blob planes with gated reads"
   homepage "https://github.com/CroftCommunity/CISS"
-  url "https://github.com/CroftCommunity/CISS/releases/download/v0.7.0/ciss-0.7.0.tar.gz"
-  sha256 "3ded8515d0a5453a20743e58ff7c0346e91be89b13d08a53981089d79f00a0e3"
+  # Source tarball. CISS releases stopped publishing a source asset after v0.7.0
+  # (v0.8.0+ ship only the prebuilt linux binary), so this uses GitHub's
+  # auto-generated tag tarball — a deliberate deviation from the "prefer uploaded
+  # assets" rule, because the preferred asset does not exist. Durable fix: have
+  # CISS's release.yml publish a source tarball again, then point back at it.
+  # sha256 computed from the fetched bytes 2026-08-26.
+  url "https://github.com/CroftCommunity/CISS/archive/refs/tags/v0.9.0.tar.gz"
+  sha256 "e0ae7166c2a8a125dec611ca3fb4c82abc038a50507b4bf9da4acdc1a24e4e34"
   license "AGPL-3.0-only"
   head "https://github.com/CroftCommunity/CISS.git", branch: "main"
 
