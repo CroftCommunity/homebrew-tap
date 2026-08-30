@@ -7,14 +7,13 @@
 class CissCtl < Formula
   desc "Client CLI for CISS: metered S3 + atproto blob planes with gated reads"
   homepage "https://github.com/CroftCommunity/CISS"
-  # Source tarball. CISS releases stopped publishing a source asset after v0.7.0
-  # (v0.8.0+ ship only the prebuilt linux binary), so this uses GitHub's
-  # auto-generated tag tarball — a deliberate deviation from the "prefer uploaded
-  # assets" rule, because the preferred asset does not exist. Durable fix: have
-  # CISS's release.yml publish a source tarball again, then point back at it.
-  # sha256 computed from the fetched bytes 2026-08-26.
-  url "https://github.com/CroftCommunity/CISS/archive/refs/tags/v0.9.0.tar.gz"
-  sha256 "e0ae7166c2a8a125dec611ca3fb4c82abc038a50507b4bf9da4acdc1a24e4e34"
+  # Source tarball: the UPLOADED release asset (ciss-vX.Y.Z-src.tar.gz), which
+  # release.yml packages from a git archive of the tagged commit and hashes
+  # itself — back on the "prefer uploaded assets" rule as of v0.10.0 (CISS
+  # TODO §6; the v0.9.0-era auto-generated-tag-tarball stopgap is retired).
+  # sha256 verified against a locally-hashed download of the asset 2026-08-29.
+  url "https://github.com/CroftCommunity/CISS/releases/download/v0.10.0/ciss-v0.10.0-src.tar.gz"
+  sha256 "f52f2c208e90eaad55f9b3e0221b97cda22ac3f0dce424c42d3b8aface4bbf68"
   license "AGPL-3.0-only"
   head "https://github.com/CroftCommunity/CISS.git", branch: "main"
 
